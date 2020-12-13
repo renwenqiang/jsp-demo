@@ -1,0 +1,1 @@
+<%@ taglib prefix="z" uri="/sunz-tags"%><z:resource items="${param.resources}"></z:resource>

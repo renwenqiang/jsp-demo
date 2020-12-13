@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop  
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/util
+			http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+    <!-- 配置式权限类型 -->
+    <bean class="com.sunz.framework.auth.impl.handler.ConfigurableHandler" >
+    	<property name="code" value="readonly" />
+    	<property name="name" value="输入框只读" />
+    	<property name="outputbody" value="true" />
+    	<property name="formatStart"><value><![CDATA[<div id="%1$s">]]></value></property>
+    	<property name="formatEnd"><value><![CDATA[</div><script type="text/javascript">$(function(){$(":input","#%1$s").attr('readonly',true);});</script>]]></value></property>
+    </bean>
+    <bean class="com.sunz.framework.auth.impl.handler.ConfigurableHandler">
+    	<property name="code" value="disabled" />
+    	<property name="name" value="输入框禁用" />
+    	<property name="outputbody" value="true" />
+    	<property name="formatStart"><value><![CDATA[<div id="%1$s">]]></value></property>
+    	<property name="formatEnd"><value><![CDATA[</div><script type="text/javascript">$(function(){$("*","#%1$s").attr('disabled',true);});</script>]]></value></property>
+    </bean>    
+</beans>

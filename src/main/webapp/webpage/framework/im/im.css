@@ -1,0 +1,228 @@
+@CHARSET "UTF-8";
+.chat-main{
+	overflow-y: auto;
+    overflow-x: hidden;
+    padding: 15px;
+    width:100%;
+}
+.chat-foot {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+.chat-history{
+	margin: 10px 0;
+    text-align: center;
+}
+.chat-history span{
+	display: inline-block;
+    line-height: 30px;
+    padding: 0 15px;
+    border-radius: 3px;
+    background-color: #ddd;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+.chat-main ul {
+    overflow-x: hidden;
+}
+.chat-li {
+    position: relative;
+    font-size: 0;
+    margin-bottom: 10px;
+    padding-left: 60px;
+    min-height: 68px;
+}
+.chat-user {
+    position: absolute;
+    left: 3px;
+}
+.chat-text {
+    position: relative;
+    min-height: 22px;
+    line-height: 22px;
+    margin-top: 25px;
+    padding: 8px 15px;
+    background-color: #fff;
+    border-radius: 3px;
+    color: #333;
+    word-break: break-all;
+}
+.chat-text, .chat-user {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+}
+.chat-user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+.chat-user cite {
+    position: absolute;
+    left: 60px;
+    top: -2px;
+    width: 500px;
+    line-height: 24px;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #999;
+    text-align: left;
+    font-style: normal;
+}
+.chat-text:after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 13px;
+    width: 0;
+    height: 0;
+    border-style: solid dashed dashed;
+    border-color: #fff transparent transparent;
+    overflow: hidden;
+    border-width: 10px;
+}
+.chat-main ul .chat-mine {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 60px;
+}
+.chat-mine .chat-user {
+    left: auto;
+    right: 3px;
+}
+.chat-mine .chat-user cite {
+    left: auto;
+    right: 60px;
+    text-align: right;
+}
+.chat-mine .chat-text {
+    margin-left: 0;
+    text-align: left;
+    background-color: #5FB878;
+    color: #fff;
+}
+.chat-mine .chat-text:after {
+    left: auto;
+    right: -10px;
+    border-top-color: #5FB878;
+}
+
+.chat-send {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    width:100%;
+    height:100%;
+}
+.chat-send textarea {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    height: 40px;
+    padding:5px 8px;
+    border: 0;
+    background-color: #fff;
+    border-radius: 3px;
+    /*line-height:20px;*/
+}
+.chat-send button {
+    border-radius: 3px;
+    height: 40px;
+    padding: 0 20px;
+    border: 0;
+    margin-left: 10px;
+    background-color: #5FB878;
+    color: #fff;
+}
+.chat-system{
+	min-height: 0;
+    margin: 20px 0 5px;
+    padding: 0;
+    text-align:center;
+}
+.chat-system span {
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 15px;
+    border-radius: 3px;
+    background-color: #ddd;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+.msgcontent{
+	white-space: pre-wrap;
+	padding: 0;
+    border: none;
+    margin: 0;
+    background: none;
+}
+
+/*sesssion*/
+.chat-session{
+	position: relative;
+    min-height: 48px;
+    padding: 5px 15px 5px 60px;
+    font-size: 0;
+    border-bottom: 1px solid #f2f2f2;
+    cursor: pointer;
+}
+.chat-session * {
+	display: inline-block;
+    vertical-align: top;
+    font-size: 17px;
+}
+.chat-session img{
+	position: absolute;
+    left: 12px;
+    top: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+}
+.chat-session .target {
+    margin-top: 2px;
+    max-width: 155px;
+    /*font-size: 17px;*/
+}
+.chat-session p {
+    display: block;
+    padding-right: 30px;
+    line-height: 18px; 
+    white-space: nowrap;
+    overflow: hidden;   
+}
+.msg{
+	margin-left:10px;
+}
+.msger,.msgSplit,.msg{
+	font-size: 13px;
+    color: #999;
+}
+.msg-status {    
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    padding: 0 5px;
+    line-height: 17px;
+    border-radius: 17px;
+    text-align: center;
+    font-size: 10px;
+    background-color: #F74C31;
+    color: #fff;
+}
+.msg-time{
+	position: absolute;
+	right: 10px;
+    top: 5px;
+    line-height:17px;
+    font-size: 10px;
+    color: #666;
+}
+
+.chat-user img{
+	cursor:pointer;
+}

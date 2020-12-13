@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		    http://www.springframework.org/schema/context			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/mvc				http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd 
+			http://cxf.apache.org/jaxws								http://cxf.apache.org/schemas/jaxws.xsd
+			http://www.springframework.org/schema/aop				http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+			http://www.springframework.org/schema/tx				http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+			">
+	<!-- aop支持 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	<!-- Controller事务支持 -->
+	<tx:annotation-driven transaction-manager="transactionManager" mode="aspectj" proxy-target-class="true" />
+			
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
+		<property name="messageConverters">  
+  			<list>
+	            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">  
+	                <property name="features">
+	                    <list>
+	                        <value>WriteDateUseDateFormat</value>
+	                    </list>
+	                </property> 
+	                <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	                <property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property> 
+	            </bean>  
+    		</list>
+       	</property>
+		<property name="webBindingInitializer">
+			<bean class="com.sunz.framework.springmvc.DateBindingInitializer" />
+		</property>
+    </bean>
+
+	<mvc:annotation-driven />
+		
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	<!-- 加载controller的时候,不加载service,因为Controller以外的都在spring本身（区别与spring mvc）中已加载-->
+	<context:component-scan base-package="com.sunz.*,
+ 										org.jeecgframework.*,
+										com.jeecg.*,
+										jeecg.workflow.*"  use-default-filters="false">
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
+	<bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="0">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="contentType" value="text/html" />
+		<property name="prefix" value="/webpage/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"	p:defaultEncoding="UTF-8">
+		<property name="maxUploadSize">
+			<value>2548576000</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+
+    <!-- Bean解析器,级别高于默认解析器,寻找bean对象进行二次处理 
+    <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+    -->
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.jeecgframework.core.interceptors.EncodingInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.sunz.framework.security.SecurityInterceptor"/>
+		</mvc:interceptor>		
+	</mvc:interceptors>
+</beans>

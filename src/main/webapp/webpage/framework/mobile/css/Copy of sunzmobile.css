@@ -1,0 +1,125 @@
+
+<!-- 
+
+-->
+html,body{
+	--background-color: #587990 !important;
+	 
+    overflow-x: hidden; 
+} 
+.sunzmui-list-v .list-group-item{
+    list-style: none; 
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.sunzmui-loading{
+    position: fixed;
+    width: 120px;
+    
+    /* top: 0; */
+    bottom: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1000;
+    text-align: center;
+    background-color: rgb(113, 113, 113);
+    /* padding-top: 50px; */
+    box-shadow: 0 0 7px #666;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.sunzmui-tab{
+	position: relative;
+}
+
+.sunzmui-tab-bottom{
+	min-height: 100%;
+	    background-color: #efefef;
+}
+
+.sunzmui-tab-bottom .tab-nav{
+	position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+        display: flex; 
+    justify-content: space-between;
+       box-shadow: 0 0 15px #ccc7c7;
+}
+.sunzmui-tab-bottom .sunzmui-tab-item{
+    width: 55px;
+    list-style: none;
+    height: 180px;
+    top: 11px;
+    bottom: 0px;
+    position: relative;
+    margin: auto;
+    padding-top: 30px;
+    text-align: center;
+    font-family: '微软雅黑';
+    font-weight: bolder;
+    font-size: 13px;
+}
+.sunzmui-tab-bottom .sunzmui-tab-item:before{
+    position: absolute;
+    top: 0px;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 15px;
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+}
+.dang{ 
+	color:red;
+}
+.dang1:before{ 
+    background-image: url(../image/dang1.png); 
+}
+.dang:before{ 
+	
+	background-image: url(../image/dang.png); 
+}
+.qiandao{ 
+	color:red;
+}
+.qiandao1:before{ 
+    background-image: url(../image/qiandao1.png); 
+}
+.qiandao:before{ 
+    background-image: url(../image/qiandao.png); 
+}
+.fuwu{ 
+	color:red;
+}
+.fuwu1:before{ 
+    background-image: url(../image/fuwu1.png); 
+}
+.fuwu:before{ 
+    background-image: url(../image/fuwu.png); 
+}
+.geren{ 
+	color:red;
+}
+.geren1:before{ 
+    background-image: url(../image/geren1.png); 
+}
+.geren:before{ 
+    background-image: url(../image/geren.png); 
+}
+
+.sunzmui-searchlist-head{
+	height:50px;
+}
+
+.sunzmui-searchlist-input{
+	
+}

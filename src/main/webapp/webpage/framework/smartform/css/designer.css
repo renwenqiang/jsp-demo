@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+body,table,td{font-size:12px}
+a{cursor:pointer !important;}
+div{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.hidden{background-color:rgba(256,0,0,0.2)}
+div.proxy-container{width:100%;height:100%;}
+.dash .proxy-container{padding:1px;border:0.1px dashed rgba(64,170,64,0.5);}
+.dash .proxy-select{outline: 0.1px dashed rgba(170,170,170,0.7);}
+.proxy-select{outline-offset:-1px;/*position:relative*/}
+.proxy-inner-container{}
+.proxy-mask{position:absolute;left:0;top:0;width:100%;height:100%;}
+.selected{outline:3px solid #0000ff !important;}
+.hover{outline:2px solid #3b97e3 !important;}
+
+.autoSize,div.proxy-select {display:inline-block;*display:inline;*zoom:1; }
+.fit{width:100% !important;height:100% !important;}
+.component{line-height:28px;padding:5px 5px 5px 48px;border: 1px solid rgba(0, 0, 0, 0.2);margin:5px;background-color:#fec;color:#19d;background-size:32px auto;background-repeat: no-repeat;background-position-x: 5px;background-position-y: 5px;}
+.componentTip{font-size:8px !important;color:white;background-color:#3b97e3;padding:5px;position:absolute;}
+.insertTip{position:absolute;background-color:green;}
+#lblComponentName{white-space:nowrap;}
+
+/*icon*/
+.designer-toolbar .l-btn-icon,.menu-icon,[name=divButton] .l-btn-icon{background-size:100% auto}
+.designer-toolbar .textbox-text {height:28px;padding:0 5px;}
+.designer-toolbar .l-btn-plain{margin-top:0;margin-bottom:0}
+.designer-toolbar{padding:2px 5px;overflow-x:hidden;}
+
+.smart-setting{background-image:url(../images/setting.png)}
+
+.smart-tool{background-image:url(../images/tool.png)}
+.smart-link{background-image:url(../images/link.png)}
+.smart-copyfrom{background-image:url(../images/copyfrom.png)}
+.smart-jsonview{background-image:url(../images/jsonview.png)}
+.smart-dash{background-image:url(../images/dash.png)}
+.smart-drag{background-image:url(../images/drag.png)}
+.smart-resize{background-image:url(../images/resize.png)}
+
+.smart-select{background-image:url(../images/select.png)}
+.smart-select-all{background-image:url(../images/select-all.png)}
+.smart-select-clear{background-image:url(../images/select-clear.png)}
+.smart-copy{background-image:url(../images/copy.png)}
+.smart-cut{background-image:url(../images/cut.png)}
+.smart-paste{background-image:url(../images/paste.png)}
+.smart-delete{background-image:url(../images/delete.png)}
+.smart-part-clear{background-image:url(../images/part-clear.png)}
+
+.smart-preview{background-image:url(../images/preview.png)}
+.smart-exportjsp{background-image:url(../images/exportjsp.png)}
+
+.json-format{background-image:url(../images/json-format.png)}
+.json-trim{background-image:url(../images/json-trim.png)}
+
+.smart-paste-manual{background-image:url(../images/paste-manual.png)}
+.smart-setting-copy{background-image:url(../images/setting-copy.png)}
+.smart-setting-paste{background-image:url(../images/setting-paste.png)}
+.smart-setting-paste-manual{background-image:url(../images/setting-paste-manual.png)}
+
+.kv-table.property td.kv-label,.kv-table.property td.kv-content{padding:2px 5px}

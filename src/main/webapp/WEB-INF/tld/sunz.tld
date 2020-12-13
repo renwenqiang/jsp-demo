@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>z</short-name>
+	<uri>/sunz-tags</uri>
+	<display-name>"三正科技自定义标签"</display-name>
+	<tag>
+		<name>resource</name>
+		<tag-class>com.sunz.framework.tag.ResourceTag</tag-class>
+		<body-content>JSP</body-content>
+		<display-name>统一前端资源引用标签</display-name>
+		<description>统一资源加载，直接生成JS、CSS等</description>
+		<example>&lt;z:resource items="jquery,easyui"&gt;&lt;/z:resource&gt;</example>
+		<attribute>
+			<name>items</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>引入的资源缩写，逗号隔开</description>
+		</attribute>
+		<attribute>
+			<name>theme</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>与imports一样，只是从概念上区别于它</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>dict</name>
+		<tag-class>com.sunz.framework.tag.DictTag</tag-class>
+		<body-content>JSP</body-content>
+		<display-name>统一数据字典引用标签</display-name>
+		<description>统一数据字典使用，按需加载</description>
+		<example>&lt;z:config items="all"&gt;&lt;/z:config&gt; &lt;z:config items="SYS001,SYS002"&gt;&lt;/z:config&gt;</example>
+		<attribute>
+			<name>items</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>引入字典项，逗号隔开</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>auth</name>
+		<tag-class>com.sunz.framework.tag.AuthFilterTag</tag-class>
+		<body-content>JSP</body-content>
+		<display-name>UI资源权限控制标签</display-name>
+		<description>html片断的权限控制</description>
+		<example>&lt;z:auth code="001" name="新增按钮，按角色控制" type="role" default="hidden"&gt; &lt;div &gt;&lt;input ...... &lt;/z:auth&gt;</example>
+		<attribute>
+			<name>code</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>资源编号</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<rtexprvalue>false</rtexprvalue>
+			<description>资源名称</description>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>类型，不写即默认为step</description>
+		</attribute>
+		<attribute>
+			<name>params</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>扩展参数，设计认为此值必须为el表达式（即动态）才有意义。默认无</description>
+		</attribute>
+		<attribute>
+			<name>default</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>默认控制类型</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>config</name>
+		<tag-class>com.sunz.framework.tag.ConfigTag</tag-class>
+		<body-content>JSP</body-content>
+		<display-name>统一系统参数配置引用标签</display-name>
+		<description>系统参数配置，按需加载</description>
+		<example>&lt;z:config items="all"&gt;&lt;/z:config&gt; &lt;z:config items="downloadpath,defaultPic"&gt;&lt;/z:config&gt;</example>
+		<attribute>
+			<name>items</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>需要在本页面引入的参数列表，逗号隔开</description>
+		</attribute>
+		<attribute>
+			<name>groups</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>需要在本页面引入的【预定义参数组名--也是配置项，其值为逗号分隔的配置参数名列表】参数列表，逗号隔开</description>
+		</attribute>
+	</tag>
+</taglib>

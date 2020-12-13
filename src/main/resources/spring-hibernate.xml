@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd"
+	default-autowire="byName" default-lazy-init="false">	
+	<!-- aop支持 -->
+	<aop:aspectj-autoproxy ></aop:aspectj-autoproxy>
+	<!-- 引入属性文件 -->
+	<context:property-placeholder location="classpath:dbconfig.properties" />
+	
+	<!-- 自动扫描Spring bean Controller排除在外（由Spring MVC另行处理） -->
+	<context:component-scan base-package="com.sunz.*,
+										org.jeecgframework.*,
+										com.jeecg.*,
+										jeecg.workflow.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 配置数据源1 -->
+	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		
+		<property name="initialSize" value="${jdbc.initialSize}" /><!-- 初始化连接大小 -->		
+		<property name="maxActive" value="${jdbc.maxActive}" /><!-- 连接池最大使用连接数量 -->
+		<property name="maxIdle" value="${jdbc.maxIdle}" /><!-- 连接池最大空闲 -->
+		<property name="minIdle" value="${jdbc.minIdle}" /><!-- 连接池最小空闲 -->
+		
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="60000" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="testWhileIdle" value="true" />
+
+		<!-- 打开removeAbandoned功能 -->
+		<property name="removeAbandoned" value="true" />
+		<property name="logAbandoned" value="true" />
+		
+		<!-- 1800秒，也就是30分钟 
+		<property name="removeAbandonedTimeout" value="1800" />
+		-->
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		-->
+		<!-- 配置一个连接在池中最大生存的时间，单位是毫秒 
+		<property name="maxEvictableIdleTimeMillis" value="25200000" />
+		-->
+		
+		<!--
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="33" />
+		-->
+		
+		<!-- 主流数据库默认即可，MSSQL可能需要自行指定
+		<property name="validationQuery" value="${jdbc.validationSql}" />
+		-->
+		<!-- 开启Druid的监控统计功能 
+		<property name="filters" value="stat" />
+		-->	
+		<!-- 其它参数：合并统计（stat开启下）、慢sql输出等
+		<property name="connectProperties">
+			<props>
+				<prop key="druid.useGlobalDataSourceStat">true</prop>
+				<prop key="druid.stat.mergeSql">true</prop>
+				<prop key="druid.stat.logSlowSql">true</prop>
+				<prop key="druid.stat.slowSqlMillis">1000</prop>
+			</props>
+		</property>
+		-->
+		<!-- 需要其它配置自行到网上搜索
+		主页：					https://github.com/alibaba/druid
+		参数详解说明：				https://www.cnblogs.com/halberd-lee/p/11304790.html
+								https://www.cnblogs.com/wuyun-blog/p/5679073.html
+		connectProperties参考： 	https://baijiahao.baidu.com/s?id=1672302434609141405&wfr=spider&for=pc
+		 -->
+	</bean>
+  
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> -->
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop><!-- auto schema mode, options are create|validate|none -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+			</props>
+		</property>
+		<!-- 注解方式配置 -->
+		<property name="packagesToScan">
+			<list>
+				<value>org.jeecgframework.web.system.pojo.*</value>
+				<value>com.jeecg.*</value>
+				<value>jeecg.workflow.entity.*</value>
+				<value>org.jeecgframework.workflow.pojo.*</value>
+				<value>com.sunz.*</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- JDBC配置 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<!-- JDBC配置 -->
+	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+
+	
+	<!-- 配置事物管理器，在*ServiceImpl里写@Transactional就可以启用事物管理 -->
+	<bean name="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- JSR303 Validator定义 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+</beans>

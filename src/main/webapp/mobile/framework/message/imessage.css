@@ -1,0 +1,12 @@
+.imm-cates{display:flex;justify-content:space-between;overflow-x:scroll;padding:5px 15px;background-color:#eee;position:absolute;z-index:1;width:100%}
+.imm-cate{padding-bottom:5px;position:relative;white-space:nowrap;margin-right:25px}
+.tab-active{color:red;}
+.tab-decorate{position:absolute;bottom:0;height:2px;background-color:red;transition:transform 0.5s;margin-left:-15px/*此值与imm-cates的padding-left保持一致*/}
+.imm-list{padding:40px 15px 5px;height:100%;overflow-y:scroll;}
+.imm-item{padding:10px 0;border-bottom:1px solid #eee}
+.imm-index{width:8px;height:8px;border-radius:5px;position:absolute;}
+.unread{background-color:#f00}
+.readed{display:none}
+.imm-cate-badge{font-size:12px;line-height:14px;min-width:14px;border-radius:7px;/*display:none;*/position:absolute;top:-4px;padding:0 2px;text-align:center;color:#fff;background:#aaa}
+.bbar-item .count-required{top: -3px;left:20px;}
+.count-required{background:#f00}

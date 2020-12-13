@@ -1,0 +1,18 @@
+.logo{height:68px;background:none}
+.top-bg{background: url(images/top_bg.jpg) no-repeat right center; float: right;}
+.icon-exit{padding-left:18px;background: url(images/exit.png) no-repeat left}
+.menuLevel1{margin-left:5px;margin-right:15px;margin-top:0px;height:62px;float:right;}
+.menuLevel1 li{position:relative;float:left;list-style: none;margin-right:10px;cursor: pointer;}
+.dLevel1Bg{width:68px;height:64px;background-size:contain !important;}
+.dLevel1{width:100%;height:100%;padding-top:40px;text-align:center;color:#909090;font-size:12px;}
+.dMenuMoreLeft{width:28px;height:64px;background:url(images/more.png) no-repeat -116px -158px}
+.dMenuMoreRight{width:28px;height:64px;background:url(images/more.png) no-repeat -90px -158px}
+.activeMenu{background-image:url(images/menu_up.png);}
+.datagrid-row{cursor:pointer;}
+.datagrid-header-row{display:none !important}
+.datagrid-row{height:36px !important;}
+.tree-folder{}
+.tree-folder-open{}
+.menu_icon{padding-left:20px;background-size:contain !important;}
+#pTop {background: #A8D7E9; height: 100px; padding: 1px; overflow: hidden;}
+#maintabs .panel-body {padding:0;overflow:hidden}
