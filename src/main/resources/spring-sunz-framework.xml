@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop  
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+            http://www.springframework.org/schema/util
+			http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 用配置的方式解决多数据库支持 -->
+	<!-- 当使用datatable时发现有我们希望支持的数据类型不识别时，为metaHelper添加以下配置进行扩展
+		<property name="exDbdataTypeMapping">
+			<util:map id="exDbdataTypeMapping" map-class="java.util.HashMap" value-type="java.lang.Integer">
+				<entry key="数据库数据类型" value="jdbc标准类型（参考java.sql.Types）" />
+		    </util:map>
+		</property>
+	 -->
+	<!-- Oracle
+	-->
+
+	<bean id="pagingHelper" class="com.sunz.framework.core.dbsupport.oracle.OraclePagingHelper" scope="singleton"></bean>
+	<bean id="metaHelper" class="com.sunz.framework.core.dbsupport.oracle.OracleMetaHelper" scope="singleton" >
+		<property name="exDbdataTypeMapping">
+			<util:map id="exDbdataTypeMapping" map-class="java.util.HashMap" value-type="java.lang.Integer">
+				<entry key="TIMESTAMP(6)" value="93" />
+				<entry key="TIMESTAMP(8)" value="93" />
+				<entry key="TIMESTAMP(10)" value="93" />
+			</util:map>
+		</property>
+	</bean>
+
+	<!-- mysql
+	<bean id="pagingHelper" class="com.sunz.framework.core.dbsupport.mysql.MysqlPagingHelper" scope="singleton">
+	</bean>
+	<bean id="metaHelper" class="com.sunz.framework.core.dbsupport.mysql.MySqlMetaHelper" scope="singleton">
+		<property name="template" ref="namedParameterJdbcTemplate"></property>
+	</bean>
+	-->
+
+	<!-- sqlserver
+   <bean id="pagingHelper" class="com.sunz.framework.core.dbsupport.sqlserver.SqlserverPagingHelper" scope="singleton">
+   </bean>
+   <bean id="metaHelper" class="com.sunz.framework.core.dbsupport.sqlserver.SqlserverMetaHelper" scope="singleton">
+       <property name="template" ref="namedParameterJdbcTemplate"></property>
+   </bean>
+    -->
+
+	<!-- postgre
+	<bean id="pagingHelper" class="com.sunz.framework.core.dbsupport.postgre.PostgrePagingHelper" scope="singleton">
+	</bean>
+	<bean id="metaHelper" class="com.sunz.framework.core.dbsupport.postgre.PostgreMetaHelper" scope="singleton">
+		<property name="template" ref="namedParameterJdbcTemplate"></property>
+	</bean>
+	 -->
+
+	<!-- 当项目实现了接口时换换成实现类或打Component注解就注掉此条 -->
+<!--	<bean  class="com.sunz.framework.core.BaseLoginSupport" />-->
+
+	<bean class="com.sunz.framework.attachment.impl.DiskFileAccessor"></bean>
+</beans>

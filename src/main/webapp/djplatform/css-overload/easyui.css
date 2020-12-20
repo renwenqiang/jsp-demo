@@ -1,0 +1,71 @@
+@charset "UTF-8";
+.must{
+	color:#F65250;
+}
+.window{/*弹出框取消边框*/padding: 0 !important;border:0 !important;}
+.window-header{background-color: rgba(236, 74, 53, 0.918) !important;height: 48px;}
+.window-header .panel-title{color:#fff;line-height: 44px;padding-left:20px;height:auto;}
+
+.l-btn:not(.l-btn-disabled){
+    box-shadow: 0 1px 2px rgb(252, 84, 84), 0 1px 1px rgb(252, 84, 84);
+    color: #fff;
+    background: #fc5454;
+    border: 1px solid #fc5454;
+    /*padding:0;*/   
+}
+.l-btn-plain:not(.l-btn-disabled){
+	border:none
+}
+form .l-btn>span{
+	margin: 4px 8px;
+}
+.datagrid .l-btn>span{
+	margin: 0;
+}
+.datagrid-toolbar .l-btn-plain {
+    margin:5px;
+}
+.datagrid-pager .l-btn{
+	box-shadow: none;
+	color:transparent;
+	background-color:transparent ;
+	border-color:transparent;
+}
+.datagrid-pager .l-btn:hover:not(.l-btn-disabled){
+	background-color:#eee;
+	border-color:#ccc;
+}
+.l-btn:hover:not(.l-btn-disabled){
+	 background-color:#C60B0B;
+	 border:1px solid #C60B0B;
+}
+.datagrid-toolbar .l-btn{white-space: nowrap;}
+.pic-btn{
+	top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    left: 0 !important;
+}
+.datagrid-row-selected {
+    background: #ffd6d6;
+}
+
+input,select,textarea,button{color:#333;padding:5px;}
+input{height:40px}
+textarea{border-color:#e2e2e2;border-radius:4px;}
+form td,.textbox-label,table.kv-table .kv-label {color:#666;}
+
+.textbox .textbox-text{	height:38px;padding:5px 10px}
+.textbox{border-color:#e2e2e2;}
+.datagrid-toolbar{overflow-x: auto;}
+.datagrid-btable .datagrid-row{height: 48px;}
+
+.searchField-more { /*查询-条件-更多，受easyui影响*/
+    margin-top:5px;
+}
+.panel-tool a {margin: 0 0 0 10px;}
+.panel-tool-close{background:url(close.png) no-repeat}
+.panel-tool-max{background:url(max.png) no-repeat}
+.panel-tool-min{background:url(min.png) no-repeat}
+.progressbar-value,.progressbar-value .progressbar-text{background-color:#FC5454}

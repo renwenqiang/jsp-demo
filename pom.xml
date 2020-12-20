@@ -80,24 +80,24 @@
         <webserver.port>8080</webserver.port>
 
     </properties>
-    <repositories>
-        <repository>
-            <id>jeecg</id>
-            <name>jeecg Repository</name>
-            <url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>jeecg-snapshots</id>
-            <name>jeecg-snapshots Repository</name>
-            <url>http://maven.jeecg.org/nexus/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>jeecg</id>-->
+<!--            <name>jeecg Repository</name>-->
+<!--            <url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>false</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--        <repository>-->
+<!--            <id>jeecg-snapshots</id>-->
+<!--            <name>jeecg-snapshots Repository</name>-->
+<!--            <url>http://maven.jeecg.org/nexus/content/repositories/snapshots</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
 
     <dependencies>
         <!-- web api -->
@@ -786,12 +786,12 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--  需要时自己加
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc14</artifactId>
             <version>10.2.0.5.0</version>
         </dependency>
+        <!--  需要时自己加
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

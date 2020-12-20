@@ -4,7 +4,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import com.sunz.framework.util.core.IEntity;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
